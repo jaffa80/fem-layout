@@ -17,7 +17,10 @@ h1,h2,h3,h4,h5,h6 {
   color: #C80060;
 }
 .wrapper {
-	margin: 0 auto;
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
 }
 article img {
   border-radius: 10px;
@@ -126,33 +129,37 @@ footer a {
   color: white;
   text-decoration: none;
 }
-/* grid system */
-.row {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 1 auto;
-}
-[class*="col-"] {
-  flex: 0 0 92%;
-  margin: 0 4%;
-}
-.full-width {
-  flex: 0 0 100%;
-  margin: 0;
-}
-[class*="sidebar"] {
-  flex: 0 0 100%;
-  margin-bottom: 2em;
-  margin-right: 1em;
-}
-.row.col-1-4 {
-  margin-top: 3em;
-}
 /* global alignment options */
-.reverse {
-  flex-direction: row-reverse;
+
+.logo {
+  grid-area: logo;
+}
+.menu_nav{
+  grid-area: nav;
+}
+.article {
+  grid-area: article;
+  display:grid;
+  grid-gap: 5em;
+  
+}
+.footer {
+  grid-area: footer;
+}
+.history {
+  grid-area: history;
+}
+.aside1 {
+  grid-area: aside1;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
+.aside2 {
+  grid-area: aside2;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 550px) { 
   .wrapper {
@@ -176,20 +183,6 @@ div.row {
   [class*='col-']{
     margin-left: 4%;
     margin-right: 0%;
-  }
-  .col-1-2,
-  .col-2,
-  [class*="sidebar"] {
-    flex: 0 0 44%; 
-  }
-  .col-1-4,
-  .col-3,
-  .col-4 {
-    flex: 0 0 92%;
-  }
-  .reverse [class*='col-'] {
-    margin-left: 0%;
-    margin-right: 4%;
   }
 }
 /* Large devices (large desktops, 1200px and up) */
@@ -220,20 +213,11 @@ div.row {
   nav a {
       padding: 0em 1em;
   }
-  .col-1-2,
-  .col-1-4 {
-    flex: 0 0 20%;
-  }
-  .col-2,
-  .col-2-4 {
-    flex: 0 0 44%;
-  }
+  
   .col-3 {
-    flex: 0 0 68%;
+    grid-area: history;
   }
-  .col-4 {
-    flex: 0 0 92%;
-  }
+  
   [class*="sidebar"] {
     flex: 0 0 100%;
   }
@@ -249,4 +233,20 @@ div.row {
   .order-fourth {
     order: 4;
   }
+  .wrapper {
+    grid-template-areas: 
+    "logo . . . . ."
+    "nav nav nav nav nav nav"
+    "article article article article article article"
+    "footer footer footer footer footer footer "
+    ;
+  }
+  .article {
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "history aside1"
+    "history aside2";
+  }
+
 }

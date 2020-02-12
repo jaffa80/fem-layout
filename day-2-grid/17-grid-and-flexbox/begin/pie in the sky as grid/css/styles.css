@@ -17,9 +17,6 @@ h1,h2,h3,h4,h5,h6 {
   color: #C80060;
   margin-top: 0;
 }
-.wrapper {
-	margin: 0 auto;
-}
 article img {
   border-radius: 10px;
   width: 100%;
@@ -73,31 +70,6 @@ nav a:hover {
   float: right;
   margin: 0 0 1em 1em;
 }
-[class*='sidebar'] {
-  border: 1px solid #00c4c7;
-  border-radius: 10px;
-  margin: 3em 0;
-}
-[class*='sidebar'] h3 {
-  margin: 0;
-  color: white;
-  background-color: #00c4c7;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding-left: 0.5em;
-}
-[class*='sidebar'] img {
-  border-radius: 0px 0px 10px 10px;
-  width: 100%;
-  max-width: 250px;
-  display: block; /* without this, there is a gap between the image and border -- space for descenders in text, for inline elements */
-} 
-.sidebar-secondary {
-  border-color: #c80060;
-}
-.sidebar-secondary h3 {
-  background-color: #c80060;
-}
 blockquote {
   padding: 0em;
   margin: 0;
@@ -128,8 +100,26 @@ footer a {
   color: white;
   text-decoration: none;
 }
-/* grid system */
+/* page layout */
+.wrapper {
+  margin: 0 auto;
+  display:block;
+}
 
+/* inner flex system */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-flow: row wrap;
+}
+li {
+	flex: auto;
+}
+li img { 
+  width: 100%; 
+}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 550px) { 
@@ -166,7 +156,7 @@ footer a {
   .wrapper {
       width: 97%;
       max-width: 1200px;
-      float: none;
+      float: grid;
   }
   h2 {
     font-size: 3em;

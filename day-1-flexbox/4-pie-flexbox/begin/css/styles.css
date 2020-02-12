@@ -17,12 +17,14 @@ h1,h2,h3,h4,h5,h6 {
   color: #C80060;
 }
 .wrapper {
+  
+  display:flex;
+  flex-flow: column wrap;
 	margin: 0 auto;
 }
 article img {
   border-radius: 10px;
-  width: 100%;
-  max-width: 250px;
+
 }
 nav {
   background: url(../img/scallop.png) repeat-x;
@@ -33,21 +35,23 @@ nav ul {
   padding: .75em;
   margin: 12px 0 0 0;
   border-bottom: 3px solid #cc8850;
-  overflow: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  
+
+}
+
+nav li {
+  text-align: center;
+  flex: 1 1 33%;
+  padding: 10px 5px;
+  /* border: 2px solid red; */
 
 }
 /* splits nav into 2 columns
 http://stackoverflow.com/questions/13104818/simple-2-column-navigation-with-css-and-a-single-list */
-nav li:nth-child(even) {
-  width: 50%;
-  float: right;
-  padding: 0.5em;
-}
-nav li:nth-child(odd) {
-  width: 50%;
-  float: left;
-    padding: 0.5em;
-}
+
 nav a {
   color: #c80060;
   text-decoration: none;
@@ -71,10 +75,18 @@ div.row {
   border-bottom-right-radius: 10px;
   padding: 1em;
 }
-.floatleft {
-  float: left;
-  margin: 0 1em 1em 0;
+
+.main {
+  display:flex;
+  flex-flow: row wrap;
 }
+
+.side {
+  display: flex;
+  flex-flow: column;
+}
+
+
 .floatright {
   float: right;
   margin: 0 0 1em 1em;
@@ -95,9 +107,9 @@ div.row {
 }
 [class*='sidebar'] img {
   border-radius: 0px 0px 10px 10px;
-  width: 100%;
-  max-width: 250px;
-  display: block; /* without this, there is a gap between the image and border -- space for descenders in text, for inline elements */
+  display: block; 
+  width:100%;
+  /* without this, there is a gap between the image and border -- space for descenders in text, for inline elements */
 } 
 .sidebar-secondary {
   border-color: #c80060;
@@ -155,7 +167,7 @@ footer a {
   .wrapper {
       width: 97%;
       max-width: 767px;
-      float: none;
+      /* float: none; */
   }
  .col-1,
  .col-2,
@@ -168,20 +180,25 @@ footer a {
 div.row {
   padding: 0 2em;
 }
+
+/* .main,
+.col-1 {
+  display:flex;
+  flex-flow: row wrap;
+} */
+
+.side {
+  display:flex;
+  flex-flow: row;
+  
+}
+
 aside[class*='sidebar'] {
-  float: left;
-  width: 47%;
+  flex: 1 1 47%;
   margin-right: 3%;
 }
 
-  nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
-  }
+  
   nav a {
       padding: 0em 1em 0em 1em;
   }
@@ -191,11 +208,18 @@ aside[class*='sidebar'] {
   .wrapper {
       width: 97%;
       max-width: 1200px;
-      float: none;
+      /* float: none; */
+  }
+
+  .main {
+    flex-flow: row;
+  }
+  .side {
+    flex-flow: column;
   }
 
   [class*='col-'] {
-    float: left;
+    /* float: left; */
     margin-left: 3.33333%;
     min-height: 1px;
   }
@@ -223,13 +247,9 @@ aside[class*='sidebar'] {
   div.row {
     padding: 0;
   }
-  nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
+  nav li {
+    flex: 1 1 15%;
+  
   }
   nav a {
       padding: 0em 1em 0em 1em;
